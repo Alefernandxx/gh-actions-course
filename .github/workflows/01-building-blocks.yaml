@@ -22,10 +22,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             # Este passo vai falhar de propósito
-            - name: Failed step
+            - name: Successful step
               run: |
-                  echo "I will fail"
-                  exit 1
+                  echo "I will succeed"
+                  exit 0
 
             # Este passo não será executado por causa da falha anterior
             - name: Say goodbye
