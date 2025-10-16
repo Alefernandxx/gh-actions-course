@@ -1,0 +1,32 @@
+# Nome do Workflow
+name: 01 - Building Blocks
+
+# Gatilhos (Triggers) que iniciam o workflow
+on:
+    push:
+    workflow_dispatch:
+
+# Trabalhos (Jobs) que serão executados
+jobs:
+    # Primeiro job
+    echo-hello:
+        # Máquina virtual onde o job vai rodar
+        runs-on: ubuntu-latest
+        # Passos (Steps) a serem executados neste job
+        steps:
+            - name: Say hello
+              run: echo "Hello, World!"
+
+    # Segundo job
+    echo-goodbye:
+        runs-on: ubuntu-latest
+        steps:
+            # Este passo vai falhar de propósito
+            - name: Failed step
+              run: |
+                  echo "I will fail"
+                  exit 1
+
+            # Este passo não será executado por causa da falha anterior
+            - name: Say goodbye
+              run: echo "Goodbye!"
